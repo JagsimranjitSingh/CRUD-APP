@@ -30,7 +30,9 @@
                                 <tr>
                                     <th>Name</th>
                                     <th>Email</th>
+                                    <th>Gender</th>
                                     <th>Age</th>
+                                    <th>Phone Number</th>
                                     <th>Action</th>
                                 </tr>
                             </thead>
@@ -70,8 +72,16 @@ function makeModal(title, button_value, callback)
                             <input type="email" name="email" id="email" class="form-control" />
                         </div>
                         <div class="mb-3">
+                            <label>Gender</label>
+                            <input type="text" name="gender" id="gender" class="form-control" />
+                        </div>
+                        <div class="mb-3">
                             <label>Age</label>
                             <input type="number" name="age" id="age" class="form-control" />
+                        </div>
+                        <div class="mb-3">
+                            <label>Phone Number</label>
+                            <input type="text" name="phone" id="phone" class="form-control" />
                         </div>
                     </div>
                     <div class="modal-footer">
@@ -133,7 +143,10 @@ function getData(){
                 <tr>
                     <td>${row.name}</td>
                     <td>${row.email}</td>
+                    <td>${row.gender}</td>
                     <td>${row.age}</td>
+                    <td>${row.phone}</td>
+
                     <td>
                         <button type="button" class="btn btn-warning btn-sm" onclick="fetchSingleData('${row._id}')">Edit</button>
                         <button type="button" class="btn btn-danger btn-sm" onclick="deleteData('${row._id}')">Delete</button>
@@ -157,7 +170,9 @@ function fetchSingleData(id){
         makeModal('Edit User', 'Edit', 'editData');
         document.getElementById('name').value = data.name;
         document.getElementById('email').value = data.email;
+        document.getElementById('gender').value = data.gender;
         document.getElementById('age').value = data.age;
+        document.getElementById('phone').value = data.phone;
         document.getElementById('user_id').value = data._id;
     });
 }

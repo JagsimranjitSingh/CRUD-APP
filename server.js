@@ -9,7 +9,7 @@ app.use(bodyParser.json());
 
 app.use(express.static(__dirname));
 
-mongoose.connect('mongodb+srv://jaskainth38:hEKqzCn7soXmE79u@cluster0.c8o2o.mongodb.net/?retryWrites=true&w=majority&appName=Cluster0');
+mongoose.connect('mongodb+srv://johnsmith174:chb9TegHolwI69JU@cluster0.8dbkdwt.mongodb.net/?retryWrites=true&w=majority&appName=Cluster0');
 
 const connect = mongoose.connection;
 
@@ -22,7 +22,9 @@ connect.once('open', () => {
 const userSchema = new mongoose.Schema({
     name : String,
     email : String,
-    age : Number
+    gender : String,
+    age : Number,
+    phone : String
 });
 
 const User = mongoose.model('User', userSchema);
@@ -35,7 +37,9 @@ app.post('/users', async (request, response) => {
     const user = new User({
         name : request.body.name,
         email : request.body.email,
-        age : request.body.age
+        gender : request.body.gender,
+        age : request.body.age,
+        phone : request.body.phone
     });
     const newItem = await user.save();
     response.status(201).json({scuccess:true});
@@ -57,7 +61,9 @@ app.put('/users/:id', async (request, response) => {
     const user = await User.findById(userId);
     user.name = request.body.name;
     user.email = request.body.email;
+    user.gender = request.body.gender;
     user.age = request.body.age;
+    user.phone = request.body.phone;
     const updatedItem = await user.save();
     response.status(200).json(updatedItem);
 });

@@ -9,7 +9,7 @@ app.use(bodyParser.json());
 
 app.use(express.static(__dirname));
 
-mongoose.connect('mongodb+srv://johnsmith174:chb9TegHolwI69JU@cluster0.8dbkdwt.mongodb.net/?retryWrites=true&w=majority&appName=Cluster0');
+mongoose.connect('mongodb+srv://jaskainth38:hEKqzCn7soXmE79u@cluster0.c8o2o.mongodb.net/?retryWrites=true&w=majority&appName=Cluster0');
 
 const connect = mongoose.connection;
 
